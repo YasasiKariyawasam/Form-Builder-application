@@ -1,6 +1,7 @@
 // src/components/layout/Header.jsx
 import React from 'react';
 import SearchBar from '../common/SearchBar';
+import ThemeToggle from '../common/ThemeToggle';
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
           <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
             <div className="w-4 h-4 border-2 border-white rounded"></div>
           </div>
-          <span className="text-xl font-bold text-purple-600">SONOLA</span>
+          <span className="text-xl font-bold text-purple-600 dark:text-purple-400">SONOLA</span>
         </div>
       </div>
       
@@ -21,10 +22,13 @@ const Header = () => {
         className="flex-1 max-w-md mx-8"
       />
       
-      {/* Try Pro Button */}
-      <button className="px-4 py-2 bg-white rounded-lg font-medium text-sm hover:shadow-md transition-all flex items-center gap-2">
-        Try Pro <span className="text-yellow-500">✨</span>
-      </button>
+      {/* Actions */}
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
+        <button className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg font-medium text-sm hover:shadow-md transition-all flex items-center gap-2 border border-gray-200 dark:border-gray-700">
+          Try Pro <span className="text-yellow-500">✨</span>
+        </button>
+      </div>
     </div>
   );
 };

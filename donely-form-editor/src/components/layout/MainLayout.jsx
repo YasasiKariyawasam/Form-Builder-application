@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => {
   const [activeTab, setActiveTab] = useState('home');
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-teal-100">
+    <div className="flex h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-teal-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <div className="flex-1 overflow-auto">

@@ -1,17 +1,33 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+// src/contexts/ThemeContext.jsx
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
-export function ThemeProvider({ children }) {
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
+  return context;
+};
+
+export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'light';
+    // Check localStorage or default to 'light'
+    const savedTheme = localStorage.getItem('sonola-theme');
+    return savedTheme || 'light';
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
-    localStorage.setItem('theme', theme);
+    // Apply theme to document root
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    // Save to localStorage
+    localStorage.setItem('sonola-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
@@ -23,6 +39,4 @@ export function ThemeProvider({ children }) {
       {children}
     </ThemeContext.Provider>
   );
-}
-
-export const useTheme = () => useContext(ThemeContext);
+};

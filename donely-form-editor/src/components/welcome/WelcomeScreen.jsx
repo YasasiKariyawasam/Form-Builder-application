@@ -1,11 +1,24 @@
+// src/components/welcome/WelcomeScreen.jsx (Optional: With React Router)
+// Use this version if you're using React Router
+
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function WelcomeScreen() {
+  const navigate = useNavigate();
   const [isDark, setIsDark] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const toggleTheme = () => setIsDark(!isDark);
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % 3);
+  
+  const nextSlide = () => {
+    if (currentSlide === 2) {
+      // Last slide - navigate to dashboard
+      navigate('/dashboard');
+    } else {
+      setCurrentSlide((prev) => (prev + 1) % 3);
+    }
+  };
 
   const slides = [
     {
@@ -47,6 +60,14 @@ function WelcomeScreen() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           )}
+        </button>
+
+        {/* Skip Button */}
+        <button
+          onClick={() => navigate('/dashboard')}
+          className="fixed top-4 left-4 z-50 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          Skip →
         </button>
 
         {/* Main Card */}
@@ -97,12 +118,12 @@ function WelcomeScreen() {
                   onClick={nextSlide}
                   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                 >
-                  Next
+                  {currentSlide === 2 ? 'Get Started' : 'Next'}
                 </button>
               </div>
             </div>
 
-            {/* Right Side - New Tailwind "S" Logo */}
+            {/* Right Side - Tailwind "S" Logo */}
             <div className="relative bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 dark:from-blue-900 dark:via-indigo-900 dark:to-purple-900 flex items-center justify-center p-8 md:p-12 overflow-hidden">
               
               {/* Decorative Blur Lights */}
@@ -111,16 +132,11 @@ function WelcomeScreen() {
                 <div className="absolute bottom-10 left-10 w-40 h-40 bg-white rounded-full blur-3xl"></div>
               </div>
 
-              {/* Stylized “S” Logo */}
+              {/* Stylized "S" Logo */}
               <div className="relative z-10 flex flex-col items-center justify-center gap-5">
-                {/* Top */}
                 <div className="w-44 h-12 rounded-lg transform -skew-x-[25deg] bg-gradient-to-br from-[#C59CFF] via-[#9E7BFF] to-[#7E5BFF] shadow-[0_6px_20px_rgba(0,0,0,0.3)] border border-white/30"></div>
-                {/* Middle */}
                 <div className="w-44 h-12 rounded-lg transform -skew-x-[25deg] bg-gradient-to-br from-[#9E7BFF] via-[#745CFF] to-[#4A3AFF] shadow-[0_6px_20px_rgba(0,0,0,0.35)] border border-white/20"></div>
-                {/* Bottom */}
                 <div className="w-44 h-12 rounded-lg transform -skew-x-[25deg] bg-gradient-to-br from-[#5E46FF] via-[#352DFF] to-[#2718D9] shadow-[0_6px_25px_rgba(0,0,0,0.4)] border border-white/10"></div>
-
-                {/* Glossy overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent blur-xl rounded-2xl pointer-events-none"></div>
               </div>
 
