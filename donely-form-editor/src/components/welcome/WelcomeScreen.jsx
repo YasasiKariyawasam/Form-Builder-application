@@ -3,14 +3,15 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../contexts/ThemeContext'; // ✅ Import useTheme
 
 function WelcomeScreen() {
   const navigate = useNavigate();
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, toggleTheme } = useTheme(); // ✅ Use useTheme
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const toggleTheme = () => setIsDark(!isDark);
-  
+
   const nextSlide = () => {
     if (currentSlide === 2) {
       // Last slide - navigate to dashboard

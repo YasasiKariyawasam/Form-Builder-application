@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const MainLayout = ({ children }) => {
   const [activeTab, setActiveTab] = useState('home');

@@ -4,7 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: ['class', "class"],
+  darkMode: 'class', // ✅ Fixed - should be a string, not an array
   theme: {
   	extend: {
   		borderRadius: {

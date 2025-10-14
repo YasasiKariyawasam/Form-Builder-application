@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Home, Folder, FileText, Upload, MoreHorizontal, Search, MapPin, Settings, User, Play, ArrowRight } from 'lucide-react';
 
 export default function SonolaDashboard() {
   const [activeTab, setActiveTab] = useState('home');
+  const navigate = useNavigate();
+
+  const handleStartCreating = () => {
+    navigate('/form-editor');
+  };
 
   const templates = [
     {
@@ -34,12 +40,10 @@ export default function SonolaDashboard() {
   return (
     <div className="flex h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-teal-100">
       
-
       {/* Main Content */}
       <div className="flex-1 overflow-auto">
         <div className="max-w-7xl mx-auto p-8">
           
-
           {/* Hero Section */}
           <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 mb-8 shadow-lg">
             <div className="grid grid-cols-2 gap-8">
@@ -48,7 +52,10 @@ export default function SonolaDashboard() {
                   Getting started<br />in Sonola
                 </h1>
                 <p className="text-gray-600 mb-6">Create intriguing marketing contents with ease!</p>
-                <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-medium hover:shadow-lg transition-all flex items-center gap-2">
+                <button 
+                  onClick={handleStartCreating}
+                  className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-medium hover:shadow-lg transition-all flex items-center gap-2"
+                >
                   <span className="text-lg">▶</span> Start creating now
                 </button>
               </div>
