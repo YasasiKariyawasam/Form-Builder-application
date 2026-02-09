@@ -142,30 +142,6 @@ form-editor/
 └── README.md
 ```
 
-## 🌐 Deployment
-
-### Deploy to Vercel
-
-1. **Push to GitHub**
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-2. **Deploy via Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Click "Add New" → "Project"
-   - Import your GitHub repository
-   - Click "Deploy"
-
-3. **Or use Vercel CLI**
-```bash
-npm install -g vercel
-vercel
-```
-
-### Build Settings
 
 - **Framework Preset:** Vite
 - **Build Command:** `npm run build`
@@ -180,4 +156,4 @@ vercel
 - **shadcn/ui** - UI component library
 - **Lucide React** - Icon library
 
-- [ ] Theme customization
+
